@@ -22,6 +22,7 @@ bool chmin(T &a, const T &b)
   return false;
 }
 #define rep(i, x, n) for (int i = x; i < (int)(n); i++)
+#define rrep(i, a, b) for (int i = a; i >= b; i--)
 
 int main()
 {
