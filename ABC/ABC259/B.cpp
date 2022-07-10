@@ -30,11 +30,11 @@ int main()
   cin >> a >> b >> d;
   static const double pi = acos(-1);
   double r = sqrt(a * a + b * b);
-  double th = atan(b / a);
-  if (a < 0)
-  {
-    th += pi;
-  }
+  double th = atan2(b, a);
+  // if (a < 0)
+  // {
+  //   th += pi;
+  // }
   // cout << th << endl;
   double xd = 0, yd = 0;
   xd = r * cos(th + d / 180 * pi);
