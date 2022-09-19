@@ -39,53 +39,77 @@ bool myCompare(pair<int, int> a, pair<int, int> b)
   }
 }
 
+// int main()
+// {
+//   int n;
+//   cin >> n;
+//   vector<ll> a(n + 1);
+//   rep(i, 1, n + 1)
+//   {
+//     cin >> a[i];
+//   }
+//   vector<ll> sum(n + 1, 0);
+//   rep(i, 1, n + 1)
+//   {
+//     sum[i] = sum[i - 1] + a[i];
+//   }
+//   vector<ll> total(n + 1, 0);
+//   rep(i, 1, n + 1)
+//   {
+//     total[i] = total[i - 1] + sum[i];
+//     // cout << total[i] << endl;
+//   }
+//   ll ans = 0;
+//   int pos = 0;
+//   rep(i, 0, n + 1)
+//   {
+//     if (chmax(ans, total[i]))
+//     {
+//       pos = i;
+//     }
+//   }
+//   if (pos == 0)
+//   {
+//     cout << ans << endl;
+//     return 0;
+//   }
+//   // cout << pos << endl;
+//   rep(i, 0, 2)
+//   {
+//     ll tmp = total[pos + i - 1];
+//     if (pos + i > n)
+//     {
+//       break;
+//     }
+//     rep(j, 0, pos + i + 1)
+//     {
+//       tmp += a[j];
+//       chmax(ans, tmp);
+//     }
+//   }
+//   cout << ans << endl;
+//   return 0;
+// }
+
 int main()
 {
   int n;
   cin >> n;
-  vector<ll> a(n + 1);
-  rep(i, 1, n + 1)
+  vector<int> a(n);
+  rep(i, 0, n)
   {
     cin >> a[i];
   }
-  vector<ll> sum(n + 1, 0);
-  rep(i, 1, n + 1)
-  {
-    sum[i] = sum[i - 1] + a[i];
-  }
-  vector<ll> total(n + 1, 0);
-  rep(i, 1, n + 1)
-  {
-    total[i] = total[i - 1] + sum[i];
-    // cout << total[i] << endl;
-  }
+
   ll ans = 0;
-  int pos = 0;
-  rep(i, 0, n + 1)
+  ll s = 0, b = 0;
+  ll maxB = 0;
+  rep(i, 0, n)
   {
-    if (chmax(ans, total[i]))
-    {
-      pos = i;
-    }
-  }
-  if (pos == 0)
-  {
-    cout << ans << endl;
-    return 0;
-  }
-  // cout << pos << endl;
-  rep(i, 0, 2)
-  {
-    ll tmp = total[pos + i - 1];
-    if (pos + i > n)
-    {
-      break;
-    }
-    rep(j, 0, pos + i + 1)
-    {
-      tmp += a[j];
-      chmax(ans, tmp);
-    }
+    b += a[i];
+    chmax(maxB, b);
+    chmax(ans, s + maxB);
+    s += b;
   }
   cout << ans << endl;
   return 0;
