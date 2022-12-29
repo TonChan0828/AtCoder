@@ -33,10 +33,6 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   int n;
   cin >> n;
-  if (n == 12) {
-    cout << 1 << endl;
-  } else {
-    cout << n + 1 << endl;
-  }
+  cout << n % 12 + 1 << endl;
   return 0;
 }
