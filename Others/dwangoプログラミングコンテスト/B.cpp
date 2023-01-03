@@ -33,29 +33,22 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   string s;
   cin >> s;
-  vector<int> nico;
   int sz = s.size();
+  ll ans = 0;
   rep(i, 0, sz) {
     if (s[i] == '2' && s[i + 1] == '5') {
-      int cnt = 1;
+      ll cnt = 1;
       int t = i + 2;
       while (t < sz && s[t] == '2' && s[t + 1] == '5') {
         ++cnt;
         t += 2;
       }
-      nico.push_back(cnt);
+      ans += cnt * (cnt + 1) / 2;
       // cout << cnt << endl;
       i = --t;
     }
   }
-  vector<ll> table(100000, 0);
-  table[0] = 1;
-  rep(i, 1, 100000) {
-    table[i] = table[i - 1] + i + 1;
-    // cout << table[i] << endl;
-  }
-  ll ans = 0;
-  rep(i, 0, nico.size()) { ans += table[nico[i] - 1]; }
+
   cout << ans << endl;
   return 0;
 }
