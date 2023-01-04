@@ -38,28 +38,12 @@ int main() {
     cout << "Not Prime" << endl;
     return 0;
   }
-  bool ok = true;
-  for (int i = 2; i * i <= n; ++i) {
-    if (n % i == 0) {
-      ok = false;
-      break;
-    }
-  }
-  if (ok) {
+
+  if (n == 2 || n == 3 || n == 5) {
     cout << "Prime" << endl;
     return 0;
   }
-
-  if (n % 2 == 0 || n % 5 == 0) {
-    cout << "Not Prime" << endl;
-    return 0;
-  }
-  int sum = 0;
-  while (n > 0) {
-    sum += n % 10;
-    n /= 10;
-  }
-  if (sum % 3 == 0) {
+  if (n % 2 == 0 || n % 3 == 0 || n % 5 == 0) {
     cout << "Not Prime" << endl;
     return 0;
   }
