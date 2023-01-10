@@ -35,18 +35,17 @@ int main() {
   cin >> n;
   ll left = 1, right = 2 * pow(10, 9) + 1;
   ll mid = 0;
-  while (left < right) {
+  while (left + 1 < right) {
     mid = (left + right) / 2;
     ll sum = (mid * (mid + 1)) / 2;
-    if (sum < n + 1) {
-      left = mid + 1;
+    if (sum <= n + 1) {
+      left = mid;
     } else {
       right = mid;
     }
     // cout << mid << endl;
   }
-  ll tmp = (right + left) / 2;
-  if ((tmp * (tmp + 1)) / 2 > n + 1) --tmp;
-  cout << min(n, n - tmp + 1) << endl;
+
+  cout << n - left + 1 << endl;
   return 0;
 }
