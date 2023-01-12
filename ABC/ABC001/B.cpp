@@ -30,19 +30,40 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
   }
 }
 
-int main() {
-  double m;
+// int main() {
+//   double m;
+//   cin >> m;
+//   double km = m / 1000;
+//   if (km < 0.1) {
+//     cout << "00" << endl;
+//   } else if (km <= 5) {
+//     if (km < 1) cout << 0;
+//     cout << (int)(km * 10) << endl;
+//   } else if (km <= 30) {
+//     cout << (int)(km + 50) << endl;
+//   } else if (km <= 70) {
+//     cout << (int)(km - 30) / 5 + 80 << endl;
+//   } else {
+//     cout << 89 << endl;
+//   }
+//   return 0;
+// }
+
+int main(void) {
+  int m;
   cin >> m;
-  double km = m / 1000;
-  if (km < 0.1) {
+
+  if (m < 100) {
     cout << "00" << endl;
-  } else if (km <= 5) {
-    if (km < 1) cout << 0;
-    cout << (int)(km * 10) << endl;
-  } else if (km <= 30) {
-    cout << (int)(km + 50) << endl;
-  } else if (km <= 70) {
-    cout << (int)(km - 30) / 5 + 80 << endl;
+  } else if (m <= 5000) {
+    {
+      if (m < 1000) cout << 0;
+      cout << m / 100 << endl;
+    }
+  } else if (m <= 30000) {
+    cout << m / 1000 + 50 << endl;
+  } else if (m <= 70000) {
+    cout << (m - 30000) / 5000 + 80 << endl;
   } else {
     cout << 89 << endl;
   }
