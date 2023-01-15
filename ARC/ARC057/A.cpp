@@ -40,14 +40,11 @@ int main() {
   } else {
     int ans = 0;
     ll sum = a;
-    while (1) {
+    while (sum < 2000000000000LL) {
       ++ans;
       sum += 1 + k * sum;
-      if (sum >= 2000000000000LL) {
-        cout << ans << endl;
-        return 0;
-      }
     }
+    cout << ans << endl;
   }
   return 0;
 }
