@@ -34,14 +34,22 @@ int main() {
   string s;
   cin >> s;
   // reverse(s.begin(), s.end());
-  ll ans = 0;
+  // ll ans = 0;
   int sz = s.size();
+  // rep(i, 0, sz) {
+  //   // cout << s[i] << endl;
+  //   ans += (s[i] - 'A' + 1);
+  //   ans *= 26;
+  // }
+  // cout << ans / 26 << endl;
+  reverse(s.begin(), s.end());
+  ll ans = 0;
+  ll x = 1;
   rep(i, 0, sz) {
-    // cout << s[i] << endl;
-    ans += (s[i] - 'A' + 1);
-    ans *= 26;
+    // cout << s[i];
+    ans += (s[i] - 'A' + 1) * x;
+    x *= 26;
   }
-  cout << setprecision(18);
-  cout << ans / 26 << endl;
+  cout << ans << endl;
   return 0;
 }
