@@ -33,32 +33,19 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   int n, k;
   cin >> n >> k;
-  vector<int> p(n), q(n);
+  vector<int> p(n);
 
   rep(i, 0, n) cin >> p[i];
-  q = p;
-  sort(q.begin(), q.end());
-  set<int> s;
-  rep(i, 0, k) s.insert(p[i]);
-  int tar = *s.begin();
-  int pos = 0;
-  rep(i, 0, n) {
-    if (tar == q[i]) {
-      pos = i;
-      break;
-    }
-  }
-  cout << tar << endl;
-  // cout << pos << endl;
-  rep(i, k, n) {
-    s.insert(p[i]);
-    if (q[pos] < p[i]) {
-      do {
-        ++pos;
-      } while (!s.count(q[pos]));
-    }
+  priority_queue<int, vector<int>, greater<int>> pq;
+  rep(i, 0, k) pq.push(p[i]);
+  cout << pq.top() << endl;
 
-    cout << q[pos] << endl;
+  rep(i, k, n) {
+    if (pq.top() < p[i]) {
+      pq.pop();
+      pq.push(p[i]);
+    }
+    cout << pq.top() << endl;
   }
   return 0;
 }
