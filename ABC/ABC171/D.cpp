@@ -31,26 +31,47 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 }
 
 int main() {
+  // int n;
+  // cin >> n;
+  // map<ll, ll> mp;
+  // ll sum = 0;
+  // rep(i, 0, n) {
+  //   ll a;
+  //   cin >> a;
+  //   ++mp[a];
+  //   sum += a;
+  // }
+  // int q;
+  // cin >> q;
+  // // cout << sum << endl;
+  // rep(i, 0, q) {
+  //   ll b, c;
+  //   cin >> b >> c;
+  //   sum += (c - b) * mp[b];
+  //   cout << sum << endl;
+  //   mp[c] += mp[b];
+  //   mp[b] = 0;
+  // }
+
   int n;
   cin >> n;
-  map<ll, ll> mp;
+  vector<ll> t(100001, 0);
   ll sum = 0;
   rep(i, 0, n) {
-    ll a;
+    int a;
     cin >> a;
-    ++mp[a];
     sum += a;
+    ++t[a];
   }
   int q;
   cin >> q;
-  // cout << sum << endl;
   rep(i, 0, q) {
-    ll b, c;
+    int b, c;
     cin >> b >> c;
-    sum += (c - b) * mp[b];
+    sum += (c - b) * t[b];
     cout << sum << endl;
-    mp[c] += mp[b];
-    mp[b] = 0;
+    t[c] += t[b];
+    t[b] = 0;
   }
   return 0;
 }
