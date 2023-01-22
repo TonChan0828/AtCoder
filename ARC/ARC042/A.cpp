@@ -40,14 +40,14 @@ int main() {
     cin >> a;
     st.push(a);
   }
-  set<int> s;
+  vector<int> v(n + 1, true);
   int sz = st.size();
   rep(i, 0, sz) {
     int x = st.top();
     st.pop();
-    if (s.find(x) == s.end()) {
+    if (v[x]) {
       cout << x << endl;
-      s.insert(x);
+      v[x] = false;
     }
   }
   return 0;
