@@ -34,32 +34,23 @@ int main() {
   int n;
   cin >> n;
 
-  vector<int> a(n + 1);
-  int cnt = 0;
-  int tar = 1, same = 0;
-
+  vector<pair<int, int>> d;
+  d.emplace_back(-1, 0);
+  int ans = 0;
   rep(i, 0, n) {
-    cin >> a[cnt];
-    if (tar == a[cnt]) {
-      ++same;
-      if (tar == same) {
-        cnt -= tar;
-        tar = a[cnt];
-        same = 0;
-        while (tar == a[cnt - same]) ++same;
-      }
+    int a;
+    cin >> a;
+    ++ans;
+    if (d.back().first == a) {
+      d.back().second++;
     } else {
-      tar = a[cnt], same = 1;
-      if (tar == same) {
-        cnt -= tar;
-        tar = a[cnt];
-        same = 0;
-        while (tar == a[cnt - same]) ++same;
-      }
+      d.emplace_back(a, 1);
     }
-    ++cnt;
-    // cout << a[cnt - 1] << tar << " " << same << " " << cnt << endl;
-    cout << cnt << endl;
+    if (d.back().first == d.back().second) {
+      ans -= d.back().second;
+      d.pop_back();
+    }
+    cout << ans << endl;
   }
 
   return 0;
