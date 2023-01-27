@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
+
+#include <atcoder/all>
 using namespace std;
-using ll = long long;
+using namespace atcoder;
+
 template <typename T>
 bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -30,6 +33,4 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
   }
 }
 
-int main() {
-  return 0;
-  }
+int main() { return 0; }
