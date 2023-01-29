@@ -44,6 +44,18 @@ int main() {
     g[u].push_back(v);
     g[v].push_back(u);
   }
+
+  if (n - 1 != m) {
+    cout << "No" << endl;
+    return 0;
+  }
+
+  rep(i, 0, n) {
+    if (g[i].size() > 2) {
+      cout << "No" << endl;
+      return 0;
+    }
+  }
   vector<bool> vis(n, false);
   queue<int> q;
   q.push(0);
@@ -58,17 +70,6 @@ int main() {
   }
   rep(i, 0, n) {
     if (!vis[i]) {
-      cout << "No" << endl;
-      return 0;
-    }
-  }
-  if (n - 1 != m) {
-    cout << "No" << endl;
-    return 0;
-  }
-
-  rep(i, 0, n) {
-    if (g[i].size() > 2) {
       cout << "No" << endl;
       return 0;
     }
