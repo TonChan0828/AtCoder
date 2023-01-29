@@ -62,10 +62,17 @@ int main() {
       return 0;
     }
   }
-  if (m == n - 1) {
-    cout << "Yes" << endl;
-  } else {
+  if (n - 1 != m) {
     cout << "No" << endl;
+    return 0;
   }
+
+  rep(i, 0, n) {
+    if (g[i].size() > 2) {
+      cout << "No" << endl;
+      return 0;
+    }
+  }
+  cout << "Yes" << endl;
   return 0;
 }
