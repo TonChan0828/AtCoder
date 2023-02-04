@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 
-#include <atcoder/all>
+// #include <atcoder/all>
 using namespace std;
-using namespace atcoder;
+// using namespace atcoder;
+using ll = long long;
 
 template <typename T>
 bool chmax(T &a, const T &b) {
