@@ -41,11 +41,10 @@ int main() {
   rep(i, 0, n) cin >> a[i];
   vector<ll> dp(n, 1000000010);
   dp[0] = 0LL;
-  rep(i, 0, n - 1) {
-    dp[i + 1] = min(dp[i + 1], dp[i] + llabs(a[i + 1] - a[i]));
-    if (i < n - 2) {
-      dp[i + 2] = min(dp[i + 2], dp[i] + llabs(a[i + 2] - a[i]));
-    }
+  dp[1] = llabs(a[1] - a[0]);
+  rep(i, 2, n) {
+    dp[i] = min(dp[i - 2] + llabs(a[i - 2] - a[i]),
+                dp[i - 1] + llabs(a[i - 1] - a[i]));
   }
   cout << dp[n - 1] << endl;
   return 0;
