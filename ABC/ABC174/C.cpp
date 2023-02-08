@@ -37,21 +37,15 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   ll k;
   cin >> k;
-  ll ans = 0;
-  ll tar = 0;
-  set<ll> s;
-  do {
-    tar *= 10;
-    tar += 7;
-    tar %= k;
-    if (s.count(tar)) {
-      cout << -1 << endl;
+  vector<ll> a(k);
+  a[0] = 7 % k;
+  rep(i, 1, k) { a[i] = (a[i - 1] * 10 + 7) % k; }
+  rep(i, 0, k) {
+    if (!a[i]) {
+      cout << i + 1 << endl;
       return 0;
     }
-    s.insert(tar);
-    ++ans;
-  } while (tar != 0);
-
-  cout << ans << endl;
+  }
+  cout << -1 << endl;
   return 0;
 }
