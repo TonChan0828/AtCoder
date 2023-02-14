@@ -33,28 +33,24 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
     return true;
   }
 }
+vector<string> ans;
 
+void dfs(int n, string s) {
+  if (n == 0) {
+    ans.push_back(s);
+    return;
+  }
+  dfs(n - 1, s + 'a');
+  dfs(n - 1, s + 'b');
+  dfs(n - 1, s + 'c');
+  return;
+}
 int main() {
   int n;
   cin >> n;
-  vector<char> t(3);
-  t[0] = 'a', t[1] = 'b', t[2] = 'c';
-  vector<int> ans(n, 0);
-
-  int total = 1;
-  rep(i, 0, n) { total *= 3; }
-
-  rep(i, 0, total) {
-    rep(j, 0, n) { cout << t[ans[j] % 3]; }
-    // rep(j, 0, n) { cout << ans[j]; }
-    cout << endl;
-    ++ans[n - 1];
-    rrep(j, n - 1, 1) {
-      if (ans[j] == 3) {
-        ans[j] = 0;
-        ++ans[j - 1];
-      }
-    }
+  dfs(n, "");
+  for (string s : ans) {
+    cout << s << endl;
   }
   return 0;
 }
