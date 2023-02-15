@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 
-// #include <atcoder/all>
+#include <atcoder/all>
 using namespace std;
-// using namespace atcoder;
+using namespace atcoder;
 using ll = long long;
 
 template <typename T>
@@ -34,7 +34,7 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
   }
 }
 
-int main(){
-
-  return 0;
-}
+int main() { 
+  
+  return 0; 
+  }
