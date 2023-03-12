@@ -38,11 +38,7 @@ int main() {
   string s;
   cin >> s;
   int sz = s.size();
-  rep(i, 1, sz / +1) {
-    char tmp = s[2 * i - 2];
-    s[2 * i - 2] = s[2 * i - 1];
-    s[2 * i - 1] = tmp;
-  }
+  rep(i, 0, sz / 2) { swap(s[2 * i], s[2 * i + 1]); }
   cout << s << endl;
   return 0;
 }
