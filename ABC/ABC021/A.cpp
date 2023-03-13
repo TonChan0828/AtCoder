@@ -37,16 +37,7 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   int n;
   cin >> n;
-  string s;
-  while (n > 1) {
-    s += '2';
-    n /= 2;
-  }
-  if (n) {
-    s += '1';
-  }
-  int sz = s.size();
-  cout << sz << endl;
-  rep(i, 0, sz) { cout << s[i] << endl; }
+  cout << n << endl;
+  rep(i, 0, n) { cout << 1 << endl; }
   return 0;
 }
