@@ -39,9 +39,7 @@ int main() {
   int n;
   cin >> s >> n;
   --n;
-  char a, b;
-  a = s[n / 5];
-  b = s[n % 5];
-  cout << a << b << endl;
+
+  cout << s[n / 5] << s[n % 5] << endl;
   return 0;
 }
