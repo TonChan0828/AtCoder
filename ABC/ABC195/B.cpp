@@ -35,20 +35,23 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 }
 
 int main() {
-  double a, b, w;
+  int a, b, w;
   cin >> a >> b >> w;
   w *= 1000;
-  int cnt = 1;
-  vector<int> ans;
-  while (w / (double)cnt >= a) {
-    if (w / (double)cnt <= b) ans.push_back(cnt);
-    ++cnt;
+  int min = 10101010, max = -1;
+  rep(i, 1, w + 1) {
+    int l = i * a;
+    int r = i * b;
+    if (l <= w && r >= w) {
+      chmin(min, i);
+      chmax(max, i);
+    }
   }
-  // cout << ans.size() << endl;
-  if (ans.empty()) {
+
+  if (min == 10101010) {
     cout << "UNSATISFIABLE" << endl;
   } else {
-    cout << ans.front() << " " << ans.back() << endl;
+    cout << min << " " << max << endl;
   }
   return 0;
 }
