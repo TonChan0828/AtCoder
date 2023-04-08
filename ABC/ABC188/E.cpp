@@ -47,23 +47,23 @@ int main() {
     --x, --y;
     t[x].push_back(y);
   }
-  vector<pair<ll, int>> score(n, {10101010101, -1});
+  vector<pair<ll, int>> dp(n, {10101010101, -1});
 
   rep(i, 0, n) {
     if (t[i].empty()) continue;
-    if (score[i].first > a[i]) {
-      score[i] = {a[i], i};
+    if (dp[i].first > a[i]) {
+      dp[i] = {a[i], i};
     }
     for (int x : t[i]) {
-      if (score[x].first > score[i].first) {
-        score[x] = score[i];
+      if (dp[x].first > dp[i].first) {
+        dp[x] = dp[i];
       }
     }
   }
   ll ans = LLONG_MIN;
   rep(i, 0, n) {
-    if (i == score[i].second) continue;
-    ans = max(ans, a[i] - score[i].first);
+    if (i == dp[i].second) continue;
+    ans = max(ans, a[i] - dp[i].first);
   }
   cout << ans << endl;
   return 0;
