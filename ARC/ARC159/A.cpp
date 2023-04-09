@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+
+#include <atcoder/all>
+using namespace std;
+using namespace atcoder;
+using ll = long long;
+
+template <typename T>
+bool chmax(T &a, const T &b) {
+  if (a < b) {
+    a = b;  // aをbで更新
+    return true;
+  }
+  return false;
+}
+template <typename T>
+bool chmin(T &a, const T &b) {
+  if (a > b) {
+    a = b;  // aをbで更新
+    return true;
+  }
+  return false;
+}
+#define rep(i, x, n) for (int i = x; i < (int)(n); ++i)
+#define rrep(i, a, b) for (int i = a; i >= (int)(b); --i)
+bool myCompare(pair<int, int> a, pair<int, int> b) {
+  if (a.first != b.first) {
+    return a.first > b.first;
+  }
+  if (a.second != b.second) {
+    return a.second < b.second;
+  } else {
+    return true;
+  }
+}
+
+int main() {
+  ll n, k;
+  cin >> n >> k;
+  vector<vector<int>> a(n, vector<int>(n));
+  rep(i, 0, n) {
+    rep(j, 0, n) {
+      char c;
+      cin >> c;
+      a[i][j] = (int)(c - '0');
+      if (a[i][j] == 0) {
+        a[i][j] = 1e9;
+      }
+    }
+  }
+
+  rep(k, 0, n) {
+    rep(i, 0, n) {
+      rep(j, 0, n) { a[i][j] = min(a[i][j], a[i][k] + a[k][j]); }
+    }
+  }
+
+  int Q;
+  cin >> Q;
+  while (Q--) {
+    ll s, t;
+    cin >> s >> t;
+    --s, --t;
+    s %= n, t %= n;
+    if (a[s][t] == 1e9) {
+      cout << -1 << endl;
+    } else {
+      cout << a[s][t] << endl;
+    }
+  }
+  return 0;
+}
