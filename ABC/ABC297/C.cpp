@@ -41,14 +41,9 @@ int main() {
   rep(i, 0, h) cin >> s[i];
 
   rep(i, 0, h) {
-    rep(j, 0, w - 1) {
-      if (s[i][j] == 'T' && s[i][j + 1] == s[i][j]) {
-        s[i][j] = 'P';
-        s[i][j + 1] = 'C';
-      }
-    }
+    s[i] = regex_replace(s[i], regex("TT"), "PC");
+    cout << s[i] << endl;
   }
 
-  rep(i, 0, h) { cout << s[i] << endl; }
   return 0;
 }
