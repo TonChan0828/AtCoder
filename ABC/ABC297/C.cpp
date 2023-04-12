@@ -43,8 +43,8 @@ int main() {
   rep(i, 0, h) {
     rep(j, 0, w - 1) {
       if (s[i][j] == 'T' && s[i][j + 1] == s[i][j]) {
-        s[i].replace(j, 1, "P");
-        s[i].replace(j + 1, 1, "C");
+        s[i][j] = 'P';
+        s[i][j + 1] = 'C';
       }
     }
   }
