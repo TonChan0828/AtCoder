@@ -37,12 +37,11 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   int h, w;
   cin >> h >> w;
-  vector<string> s(h);
-  rep(i, 0, h) cin >> s[i];
 
   rep(i, 0, h) {
-    s[i] = regex_replace(s[i], regex("TT"), "PC");
-    cout << s[i] << endl;
+    string s;
+    cin >> s;
+    cout << regex_replace(s, regex("TT"), "PC") << endl;
   }
 
   return 0;
