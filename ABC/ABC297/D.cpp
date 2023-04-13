@@ -42,17 +42,11 @@ int main() {
   if (a < b) {
     swap(a, b);
   }
-  while (a != b) {
-    if (a % b) {
-      cnt += a / b;
-      ll tmp = a % b;
-      a = b;
-      b = tmp;
-    } else {
-      cnt += a / b - 1;
-      break;
-    }
+  while (b > 0) {
+    cnt += a / b;
+    a %= b;
+    swap(a, b);
   }
-  cout << cnt << endl;
+  cout << cnt - 1 << endl;
   return 0;
 }
