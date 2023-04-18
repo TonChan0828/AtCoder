@@ -60,7 +60,6 @@ int main() {
     } else {
       int i;
       cin >> i;
-      int sz = card[i].size();
       for (int x : card[i]) {
         cout << x << " ";
       }
