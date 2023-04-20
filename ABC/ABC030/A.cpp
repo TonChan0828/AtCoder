@@ -35,13 +35,13 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 }
 
 int main() {
-  double a, b, c, d;
+  int a, b, c, d;
   cin >> a >> b >> c >> d;
   string ans;
 
-  if (b / a > d / c) {
+  if (b * c > d * a) {
     ans = "TAKAHASHI";
-  } else if (b / a < d / c) {
+  } else if (b * c < d * a) {
     ans = "AOKI";
   } else {
     ans = "DRAW";
