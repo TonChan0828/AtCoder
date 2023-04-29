@@ -52,7 +52,10 @@ int main() {
   int q;
   cin >> n >> m >> q;
   vector<int> a(q), b(q), c(q), d(q);
-  rep(i, 0, q) cin >> a[i] >> b[i] >> c[i] >> d[i];
+  rep(i, 0, q) {
+    cin >> a[i] >> b[i] >> c[i] >> d[i];
+    --a[i], --b[i];
+  }
   vector<int> tt;
   rep(i, 1, m + 1) createSequence(tt, i, 1);
   int sz = seq.size();
@@ -62,7 +65,7 @@ int main() {
     // cout << endl;
     int tmp = 0;
     rep(j, 0, q) {
-      if (seq[i][b[j] - 1] - seq[i][a[j] - 1] == c[j]) tmp += d[j];
+      if (seq[i][b[j]] - seq[i][a[j]] == c[j]) tmp += d[j];
     }
     ans = max(ans, tmp);
   }
