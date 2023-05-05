@@ -37,15 +37,12 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   ll a, b, n;
   cin >> a >> b >> n;
-  ll tar = lcm(a, b);
-  if (n % tar) {
-    if (tar < n) {
-      cout << tar * ((n / tar) + 1) << endl;
-    } else {
-      cout << tar << endl;
+
+  rep(i, 1, 200001) {
+    if (i % a == 0 && i % b == 0 && i >= n) {
+      cout << i << endl;
+      return 0;
     }
-  } else {
-    cout << tar * (n / tar) << endl;
   }
   return 0;
 }
