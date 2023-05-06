@@ -37,13 +37,10 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   int n;
   cin >> n;
-  string ans = "SAME";
-  int tar = n % 10;
-  rep(i, 0, 4) {
-    int t = n % 10;
-    if (tar != t) ans = "DIFFERENT";
-    n /= 10;
+  if (n % 1111 == 0) {
+    cout << "SAME" << endl;
+  } else {
+    cout << "DIFFERENT" << endl;
   }
-  cout << ans << endl;
   return 0;
 }
