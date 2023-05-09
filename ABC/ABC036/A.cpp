@@ -37,11 +37,6 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   int a, b;
   cin >> a >> b;
-  int ans = b / a;
-  if (a * ans >= b) {
-    cout << ans << endl;
-  } else {
-    cout << ans + 1 << endl;
-  }
+  cout << (a + b - 1) / a << endl;
   return 0;
 }
