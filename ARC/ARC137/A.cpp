@@ -39,10 +39,10 @@ int main() {
   cin >> l >> r;
 
   ll ans = 0;
-  for (ll i = l; i <= l + 1500; ++i) {
-    for (ll j = r - 1500; j <= r; ++j) {
+  for (ll i = l; i <= r && r - i > ans; ++i) {
+    for (ll j = r; j >= l && j - i > ans; --j) {
       if (gcd(j, i) == 1) {
-        ans = max(ans, j - i);
+        ans = j - i;
       }
     }
   }
