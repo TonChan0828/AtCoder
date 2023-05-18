@@ -43,9 +43,8 @@ int main() {
   rep(i, 0, n) {
     int l, r;
     cin >> l >> r;
-    --l, --r;
-    string tmp = s;
-    rep(j, 0, r - l + 1) { s[l + j] = tmp[r - j]; }
+    --l;
+    reverse(s.begin() + l, s.begin() + r);
   }
 
   cout << s << endl;
