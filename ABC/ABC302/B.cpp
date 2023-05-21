@@ -57,7 +57,7 @@ int main() {
       rep(k, 0, 8) {
         if (dfs(j, i, 0, k)) {
           rep(l, 0, 5) {
-            cout << i + 1 << " " << j + 1 << endl;
+            printf("%d %d\n", i + 1, j + 1);
             j += dx[k];
             i += dy[k];
           }
