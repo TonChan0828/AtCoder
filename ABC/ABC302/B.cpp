@@ -44,8 +44,8 @@ bool dfs(int x, int y, int cnt, int type) {
   if (cnt == 5) return true;
   if (x < 0 || x >= w || y < 0 || y >= h) return false;
   if (s[y][x] != tar[cnt]) return false;
-  bool tmp = dfs(x + dx[type], y + dy[type], cnt + 1, type);
-  return tmp;
+  bool res = dfs(x + dx[type], y + dy[type], cnt + 1, type);
+  return res;
 }
 
 int main() {
