@@ -46,20 +46,11 @@ int main() {
     bool ok = true;
 
     rep(i, 0, n - 1) {
-      set<int> set;
       int cnt = 0;
       rep(j, 0, m) {
-        rep(k, 0, m) {
-          if (set.count(k)) continue;
-          if (s[i][j] == s[i + 1][k]) {
-            ++cnt;
-            set.insert(k);
-            break;
-          }
-        }
+        if (s[i][j] != s[i + 1][j]) ++cnt;
       }
-      // cout << s[i] << " " << s[i + 1] << " " << cnt << endl;
-      if (cnt + 1 != m) {
+      if (cnt != 1) {
         ok = false;
         break;
       }
