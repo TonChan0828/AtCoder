@@ -38,10 +38,7 @@ int main() {
   int n, m;
   cin >> n >> m;
   vector<string> s(n);
-  rep(i, 0, n) {
-    cin >> s[i];
-    sort(s[i].begin(), s[i].end());
-  }
+  rep(i, 0, n) cin >> s[i];
   sort(s.begin(), s.end());
 
   do {
