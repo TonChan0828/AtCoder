@@ -45,7 +45,7 @@ int main() {
     cin >> t;
     ++b[t];
   }
-  set<ll> ans;
+  vector<ll> ans;
 
   for (auto [key, value] : b) {
     bool ok = true;
@@ -59,9 +59,9 @@ int main() {
         ok = false;
       }
     }
-    if (ok) ans.insert(tar);
+    if (ok) ans.push_back(tar);
   }
-
+  sort(ans.begin(), ans.end());
   cout << ans.size() << endl;
   for (ll x : ans) cout << x << endl;
   return 0;
