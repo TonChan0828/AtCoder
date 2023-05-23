@@ -38,7 +38,7 @@ int main() {
   int n;
   cin >> n;
   vector<ll> a(n);
-  map<ll, int> b;
+  unordered_map<ll, int> b;
   rep(i, 0, n) cin >> a[i];
   rep(i, 0, n) {
     ll t;
