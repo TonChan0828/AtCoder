@@ -37,8 +37,7 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   int n;
   cin >> n;
-  int ans = 0;
-  rep(i, 0, n + 1) { ans += i; }
-  cout << ans << endl;
+  cout << n * (n + 1) / 2 << endl;
+
   return 0;
 }
