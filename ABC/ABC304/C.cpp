@@ -47,7 +47,7 @@ int main() {
   while (!q.empty()) {
     int tar = q.front();
     q.pop();
-    vis[tar] = true;
+    // vis[tar] = true;
     // cout << tar << endl;
     rep(i, 0, n) {
       if (vis[i]) continue;
