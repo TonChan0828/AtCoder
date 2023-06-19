@@ -37,22 +37,16 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   int n;
   cin >> n;
-  vector<vector<int>> a(n);
+  vector<int> a(n), ans;
 
   rep(i, 0, 3 * n) {
     int tmp;
     cin >> tmp;
     --tmp;
-    a[tmp].push_back(i);
+    ++a[tmp];
+    if (a[tmp] == 2) ans.push_back(tmp + 1);
   }
-  vector<pair<int, int>> ans(n);
-  rep(i, 0, n) {
-    sort(a[i].begin(), a[i].end());
-    ans[i] = {a[i][1], i + 1};
-  }
-  sort(ans.begin(), ans.end());
-  rep(i, 0, n) { printf("%d ", ans[i].second); }
+  rep(i, 0, n) printf("%d ", ans[i]);
   cout << endl;
-
   return 0;
 }
