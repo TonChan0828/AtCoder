@@ -37,64 +37,55 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   int n;
   cin >> n;
-  vector<int> p(n), q;
-  for (auto &x : p) cin >> x, x--;
-  q = p;
-  // 操作は偶置換
-  // pの転倒数が奇数ならば不可能
-  int cnt = 0;
-  while (1) {
-    bool no_swap = true;
-    for (int i = 0; i < n - 1; i++) {
-      if (q[i] > q[i + 1]) {
-        swap(q[i], q[i + 1]);
-        cnt++;
-        no_swap = false;
-      }
-    }
-    if (no_swap) {
-      break;
-    }
-  }
-  if (cnt % 2 == 1) {
-    cout << "No" << endl;
-    return 0;
-  }
+  vector<int> p(n);
+  rep(i, 0, n) cin >> p[i];
   vector<pair<int, int>> ans;
-  while (1) {
-    bool no_swap = true;
-    for (int i = 0; i < n; i++) {
-      if (p[i] != i) {
-        // p[i] != i となる最小のiについて操作を行う
-        // p[j] = i となるjを探す
-        if (p[n - 1] != i) {
-          //
-          int idx = find(p.begin(), p.end(), i) - p.begin();
-          int p1 = p[idx];
-          int p2 = p[idx + 1];
-          for (int j = idx - 1; j >= i; j--) {
-            p[j + 2] = p[j];
-          }
-          p[i] = p1;
-          p[i + 1] = p2;
-          ans.push_back({idx + 1, i});
+  rep(i, 0, n - 1) {
+    if (p[i] == i + 1) continue;
+    vector<int> tmp;
+    rep(j, i + 1, n) {
+      if (p[j] == i + 1) {
+        if (j < n - 1) {
+          tmp = {p[j], p[j + 1]};
+          p.erase(p.begin() + j, p.begin() + j + 2);
+          p.insert(p.begin() + i, tmp.begin(), tmp.end());
+          ans.push_back({j + 1, i});
         } else {
-          //
+          if (i == n - 2) {
+            cout << "No" << endl;
+            return 0;
+          }
+          ans.push_back({n - 1, n - 3});
           swap(p[n - 3], p[n - 2]);
           swap(p[n - 2], p[n - 1]);
-          ans.push_back({n - 1, n - 3});
+          // rep(i, 0, n) printf("t%d ", p[i]);
+          // cout << endl;
+          ans.push_back({j, i});
+          tmp = {p[j - 1], p[j]};
+          p.erase(p.begin() + j - 1, p.begin() + j + 1);
+          p.insert(p.begin() + i, tmp.begin(), tmp.end());
         }
-        no_swap = false;
         break;
       }
     }
-    if (no_swap) break;
+    // rep(i, 0, n) printf("%d ", p[i]);
+    // cout << endl;
   }
-  int m = (int)ans.size();
-  cout << "Yes" << endl;
-  cout << m << endl;
-  for (auto [i, j] : ans) {
-    cout << i << " " << j << endl;
+  bool ok = true;
+  rep(i, 0, n) {
+    if (p[i] != i + 1) {
+      ok = false;
+      break;
+    }
+  }
+  if (ok) {
+    cout << "Yes" << endl;
+    cout << ans.size() << endl;
+    for (auto [i, j] : ans) {
+      printf("%d %d\n", i, j);
+    }
+  } else {
+    cout << "No" << endl;
   }
   return 0;
 }
