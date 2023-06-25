@@ -35,116 +35,50 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 }
 
 int main() {
-  int ha, wa, hb, wb, hx, wx;
-  cin >> ha >> wa;
-  vector<string> a(ha);
-  rep(i, 0, ha) cin >> a[i];
-  cin >> hb >> wb;
-  vector<string> b(hb);
-  rep(i, 0, hb) cin >> b[i];
-  cin >> hx >> wx;
-  vector<vector<char>> x(hx + 21, vector<char>(wx + 21, '.'));
-  vector<vector<int>> check(hx + 21, vector<int>(wx + 21, 0));
-  vector<vector<int>> ac(ha, vector<int>(wa, 0));
-  vector<vector<int>> bc(hb, vector<int>(wb, 0));
-
-  rep(i, 0, hx) {
-    rep(j, 0, wx) { cin >> x[10 + hx + i][10 + wx + j]; }
+  string a[3][10];
+  int h[3], w[3];
+  rep(q, 0, 3) {
+    cin >> h[q] >> w[q];
+    rep(i, 0, h[q]) cin >> a[q][i];
   }
 
-  // rep(i, 0, hx + 20) {
-  //   rep(j, 0, wx + 20) { printf("%d ", check[i][j]); }
-  //   cout << "\n";
-  // }
+  rep(h0, 1, 20) {
+    rep(w0, 1, 20) {
+      rep(h1, 1, 20) {
+        rep(w1, 1, 20) {
+          vector<vector<char>> tmp(30, vector<char>(31, '.'));
 
-  rep(i, 0, 20 + hx) {
-    rep(j, 0, 20 + wx) {
-      auto tmp = check;
-      bool ok = true;
-      rep(k, 0, ha) {
-        rep(l, 0, wa) {
-          if (i + k > 20 + hx || j + l > 20 + wx) continue;
-          if (a[k][l] == '#' && x[i + k][j + l] == '.') {
-            ok = false;
-            break;
-          } else {
-            if (a[k][l] == '#' && a[k][l] == x[i + k][j + l]) {
-              tmp[i + k][j + l] = 1;
+          rep(i, 0, h[0]) {
+            rep(j, 0, w[0]) {
+              if (a[0][i][j] == '#') tmp[i + h0][j + w0] = '#';
             }
           }
-        }
-      }
-      if (ok) {
-        aa = true;
-        check = tmp;
-        rep(k, 0, ha) {
-          rep(l, 0, wa) {
-            if (a[k][l] == '#') ac[k][l] = 1;
-          }
-        }
-      }
-
-      tmp = check;
-      ok = true;
-      rep(k, 0, hb) {
-        rep(l, 0, wb) {
-          if (i + k > 20 + hx || j + l > 20 + wx) continue;
-
-          if (b[k][l] == '#' && x[i + k][j + l] == '.') {
-            tmp[i + k][j + l] = 0;
-            ok = false;
-            break;
-          } else {
-            if (b[k][l] == '#' && b[k][l] == x[i + k][j + l]) {
-              tmp[i + k][j + l] = 1;
+          rep(i, 0, h[1]) {
+            rep(j, 0, w[1]) {
+              if (a[1][i][j] == '#') tmp[i + h1][j + w1] = '#';
             }
           }
-        }
-      }
-      if (ok) {
-        check = tmp;
-        bb = true;
-        rep(k, 0, hb) {
-          rep(l, 0, wb) {
-            if (b[k][l] == '#') bc[k][l] = 1;
+
+          bool flag = true;
+          rep(i, 0, 30) {
+            rep(j, 0, 30) {
+              if ((0 <= (i - 10)) && ((i - 10) < h[2]) && (0 <= (j - 10)) &&
+                  ((j - 10 < w[2]))) {
+                if (tmp[i][j] != a[2][i - 10][j - 10]) flag = false;
+              } else {
+                if (tmp[i][j] != '.') flag = false;
+              }
+            }
+          }
+          if (flag) {
+            cout << "Yes" << endl;
+            return 0;
           }
         }
       }
     }
   }
 
-  // rep(i, 0, hx + 20) {
-  // rep(j, 0, wx + 20) { printf("%d ", check[i][j]); }
-  //   cout << "\n";
-  // }
-
-  rep(i, 0, ha) {
-    rep(j, 0, wa) {
-      if (a[i][j] == '#' && ac[i][j] == 0) {
-        cout << "No" << endl;
-        return 0;
-      }
-    }
-  }
-
-  rep(i, 0, hb) {
-    rep(j, 0, wb) {
-      if (b[i][j] == '#' && bc[i][j] == 0) {
-        cout << "No" << endl;
-        return 0;
-      }
-    }
-  }
-
-  rep(i, 0, 21 + hx) {
-    rep(j, 0, 21 + wx) {
-      if ((x[i][j] == '#' && !check[i][j])) {
-        cout << "No" << endl;
-        return 0;
-      }
-    }
-  }
-  cout << "Yes" << endl;
-
+  cout << "No" << endl;
   return 0;
 }
