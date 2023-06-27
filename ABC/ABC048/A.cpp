@@ -35,9 +35,11 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 }
 
 int main() {
-  vector<string> a(3);
-  rep(i, 0, 3) cin >> a[i];
-  rep(i, 0, 3) cout << a[i][0];
+  rep(i, 0, 3) {
+    string s;
+    cin >> s;
+    printf("%c", s[0]);
+  }
   cout << endl;
   return 0;
 }
