@@ -37,7 +37,7 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   string s;
   cin >> s;
-  string ans = regex_replace(s, regex(","), " ");
-  cout << ans << endl;
+  s[5] = s[13] = ' ';
+  cout << s << endl;
   return 0;
 }
