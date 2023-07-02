@@ -34,14 +34,22 @@ bool desc_asc(pair<long double, int> &left, pair<long double, int> &right) {
 int main() {
   int n;
   cin >> n;
-  vector<pair<long double, int>> c(n);
+  vector<pair<int, int>> ab(n);
   rep(i, 0, n) {
     long double a, b;
     cin >> a >> b;
-    c[i] = {a / (a + b), i + 1};
+    ab[i] = {a, a + b};
   }
-  sort(c.begin(), c.end(), desc_asc);
-  rep(i, 0, n) { printf("%d ", c[i].second); }
+  vector<int> p(n);
+  rep(i, 0, n) p[i] = i;
+  auto f = [&](int i, int j) {
+    auto [ai, aj] = ab[i];
+    auto [bi, bj] = ab[j];
+    return (ll)ai * bj > (ll)aj * bi;
+  };
+
+  stable_sort(p.begin(), p.end(), f);
+  rep(i, 0, n) { printf("%d ", p[i] + 1); }
   cout << endl;
 
   return 0;
