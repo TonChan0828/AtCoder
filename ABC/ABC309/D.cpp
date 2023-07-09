@@ -47,11 +47,9 @@ int main() {
   }
 
   vector<bool> vis(n1 + n2, false);
-  vector<int> d(n1 + n2, 0);
   int ans = 0;
 
   rep(i, 0, n1 + n2) {
-    if (vis[i]) continue;
     if (!(i == 0 || i == n1 + n2 - 1)) continue;
     queue<pair<int, int>> q;
     int ma = 0;
