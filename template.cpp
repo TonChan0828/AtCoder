@@ -23,18 +23,24 @@ bool chmin(T &a, const T &b) {
 }
 #define rep(i, x, n) for (int i = x; i < (int)(n); ++i)
 #define rrep(i, a, b) for (int i = a; i >= (int)(b); --i)
-bool myCompare(pair<int, int> a, pair<int, int> b) {
-  if (a.first != b.first) {
-    return a.first > b.first;
-  }
-  if (a.second != b.second) {
-    return a.second < b.second;
+// first昇順 firstが同値の場合second降順
+bool asc_desc(pair<int, int> &left, pair<int, int> &right) {
+  if (left.first == right.first) {
+    return right.second < left.second;
   } else {
-    return true;
+    return left.first < right.first;
+  }
+}
+// first降順 firstが同値の場合second昇順
+bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
+  if (left.first == right.first) {
+    return left.second < right.second;
+  } else {
+    return right.first < left.first;
   }
 }
 
 int main() { 
   
-  return 0; 
+  return 0;
   }
