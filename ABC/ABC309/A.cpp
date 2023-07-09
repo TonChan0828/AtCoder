@@ -37,13 +37,12 @@ bool myCompare(pair<int, int> a, pair<int, int> b) {
 int main() {
   int a, b;
   cin >> a >> b;
-  if (b - a == 1) {
-    if (a == 3 || a == 6) {
-    } else {
-      cout << "Yes" << endl;
-      return 0;
-    }
+
+  if (a % 3 && b - a == 1) {
+    cout << "Yes" << endl;
+    return 0;
   }
+
   cout << "No" << endl;
   return 0;
 }
