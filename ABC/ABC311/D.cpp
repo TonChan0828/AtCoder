@@ -2,42 +2,45 @@
 
 using namespace std;
 
-#define rep(i, x, n) for (int i = x; i < (n); ++i)
+#define rep(i, x, n) for (int i = x; i < (int)(n); ++i)
 
-const int di[] = {-1, 0, 1, 0};
-const int dj[] = {0, -1, 0, 1};
-
+const int dx[] = {0, -1, 0, 1}, dy[] = {-1, 0, 1, 0};
 int main() {
   int n, m;
   cin >> n >> m;
   vector<string> s(n);
   rep(i, 0, n) cin >> s[i];
-  vector visited(n, vector<bool>(m));
-  vector passed(n, vector<bool>(m));
+  vector vis(n, vector<bool>(m));
+  vector pass(n, vector<bool>(m));
 
   queue<pair<int, int>> q;
   q.emplace(1, 1);
-  passed[1][1] = visited[1][1] = true;
+  pass[1][1] = vis[1][1] = true;
   while (!q.empty()) {
-    auto [i, j] = q.front();
+    auto [y, x] = q.front();
     q.pop();
-    rep(v, 0, 4) {
-      int ni = i, nj = j;
-      while (s[ni][nj] == '.') {
-        passed[ni][nj] = true;
-        ni += di[v];
-        nj += dj[v];
+
+    rep(i, 0, 4) {
+      int tx = x, ty = y;
+      while (s[ty][tx] == '.') {
+        pass[ty][tx] = true;
+        // printf("%d %d\n", ty, tx);
+        ty += dy[i];
+        tx += dx[i];
       }
-      ni -= di[v];
-      nj -= dj[v];
-      if (visited[ni][nj]) continue;
-      visited[ni][nj] = true;
-      q.emplace(ni, nj);
+      ty -= dy[i];
+      tx -= dx[i];
+      if (vis[ty][tx]) continue;
+      vis[ty][tx] = true;
+      q.emplace(ty, tx);
     }
   }
-
-  int ans = 0;
-  rep(i, 0, n) rep(j, 0, m) if (passed[i][j]) ans++;
-  cout << ans << endl;
+  int cnt = 0;
+  rep(i, 0, n) {
+    rep(j, 0, m) {
+      if (pass[i][j]) ++cnt;
+    }
+  }
+  cout << cnt << endl;
   return 0;
 }
