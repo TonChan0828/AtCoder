@@ -52,8 +52,8 @@ int main() {
     g[b].push_back(a);
   }
   const int INF = 1010101;
-  vector<int> vis(n, INF), sign(n);
-  vis[0] = sign[0] = 0;
+  vector<int> sign(n, INF);
+  sign[0] = 0;
   queue<pair<int, int>> q;
   q.push({0, -1});
 
@@ -63,15 +63,14 @@ int main() {
     q.pop();
 
     for (int y : g[x]) {
-      if (vis[y] != INF) continue;
-      vis[y] = vis[x] + 1;
+      if (sign[y] != INF) continue;
       sign[y] = x;
       q.push({y, x});
     }
   }
 
   rep(i, 0, n) {
-    if (vis[i] == INF) {
+    if (sign[i] == INF) {
       cout << "No" << endl;
       return 0;
     }
