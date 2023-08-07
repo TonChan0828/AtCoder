@@ -44,9 +44,8 @@ int main() {
   int n;
   cin >> n;
   int ans = INT_MAX;
-  rep(i, 1, n + 1) {
-    int j = n / i;
-    ans = min(ans, abs(i - j) + n % (i * j));
+  for (int i = 1; i * i <= n; ++i) {
+    ans = min(ans, abs(n / i - i) + n % i);
   }
   cout << ans << endl;
   return 0;
