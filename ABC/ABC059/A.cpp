@@ -44,7 +44,7 @@ int main() {
   vector<string> s(3);
   rep(i, 0, 3) cin >> s[i];
   string ans;
-  rep(i, 0, 3) { ans.push_back(s[i][0] - 'a' + 'A'); }
+  rep(i, 0, 3) { ans.push_back(toupper(s[i][0])); }
   cout << ans << endl;
   return 0;
 }
