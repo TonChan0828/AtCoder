@@ -47,7 +47,8 @@ int main() {
       "2862089986280348253421170679";
   int n;
   cin >> n;
-  rep(i, 0, n + 2) { cout << s[i]; }
-  cout << endl;
+  // rep(i, 0, n + 2) { cout << s[i]; }
+  // cout << endl;
+  cout << s.substr(0, n + 2) << endl;
   return 0;
 }
