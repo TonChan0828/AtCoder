@@ -45,8 +45,7 @@ int main() {
   cin >> n;
   vector<ll> x(n), y(n), z(n);
   rep(i, 0, n) cin >> x[i] >> y[i] >> z[i];
-  ll sum = 0;
-  rep(i, 0, n) sum += z[i];
+  ll sum = accumulate(begin(z), end(z), 0);
   const ll INF = __LONG_LONG_MAX__;
   vector<vector<ll>> dp(sum + 1, vector<ll>(n + 1, INF));
   dp[0][0] = 0;
