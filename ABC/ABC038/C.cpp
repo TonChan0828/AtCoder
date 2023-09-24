@@ -46,18 +46,18 @@ int main() {
   vector<ll> a(n);
   rep(i, 0, n) cin >> a[i];
   ll ans = 1;
-  int l = 0;
+  ll cnt = 0;
   rep(i, 1, n) {
     ++ans;
     if (a[i] <= a[i - 1]) {
-      int cnt = i - l;
-      ans += (cnt * (cnt - 1)) / 2;
-      l = i;
+      cnt = 0;
+    } else {
+      ++cnt;
+      ans += cnt;
     }
     // cout << ans << endl;
   }
-  ll cnt = n - l;
-  ans += (cnt * (cnt - 1LL)) / 2LL;
+
   cout << ans << endl;
   return 0;
 }
