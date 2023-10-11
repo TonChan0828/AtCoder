@@ -40,7 +40,31 @@ bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
   }
 }
 
-int main() { 
-  
-  return 0;
+int main() {
+  int n;
+  cin >> n;
+  vector<pair<ll, ll>> sc(n);
+  rep(i, 0, n) {
+    ll s, c;
+    cin >> s >> c;
+    sc[i] = {s, c};
   }
+  sort(begin(sc), end(sc));
+  map<ll, ll> mp;
+  rep(i, 0, n) {
+    auto [s, c] = sc[i];
+    while (c > 0) {
+      ll spc = mp[s] + c;
+      mp[s] = spc % 2;
+      c = spc / 2;
+      s *= 2;
+    }
+  }
+  ll ans = 0;
+  for (auto [key, value] : mp) {
+    // cout << key << " " << value << endl;
+    ans += value;
+  }
+  cout << ans << endl;
+  return 0;
+}
