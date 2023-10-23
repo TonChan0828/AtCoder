@@ -48,16 +48,13 @@ int main() {
   rep(i, 0, n) cin >> w[i] >> x[i];
   ll ans = 0;
 
-  rep(i, 0, n) {
-    int diff = x[i];
-    rep(j, 9, 18) {
-      ll tmp = 0;
-      rep(k, 0, n) {
-        int time = (24 + j + x[k] - diff) % 24;
-        if (time >= 9 && time < 18) tmp += w[k];
-      }
-      chmax(ans, tmp);
+  rep(i, 0, 24) {
+    ll tmp = 0;
+    rep(j, 0, n) {
+      int time = (i + x[j]) % 24;
+      if (time >= 9 && time < 18) tmp += w[j];
     }
+    chmax(ans, tmp);
   }
   cout << ans << endl;
   return 0;
