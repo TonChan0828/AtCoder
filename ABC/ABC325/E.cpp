@@ -66,18 +66,19 @@ int main() {
   }
 
   bus[n - 1] = 0;
-  vector<bool> rvis(n, false);
+  vis.clear();
+  vis.resize(n, false);
   while (true) {
     int pos = -1;
     ll minDist = INF;
     rep(i, 0, n) {
-      if (rvis[i] || minDist <= bus[i]) continue;
+      if (vis[i] || minDist <= bus[i]) continue;
       pos = i;
       minDist = bus[i];
     }
     // cout << pos << endl;
     if (pos == -1) break;
-    rvis[pos] = true;
+    vis[pos] = true;
     rep(i, 0, n) { bus[i] = min(bus[i], bus[pos] + d[pos][i] * b + c); }
   }
 
