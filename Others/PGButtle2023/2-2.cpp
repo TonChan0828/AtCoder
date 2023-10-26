@@ -40,26 +40,26 @@ bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
   }
 }
 
-const vector<string> tar = {"ABC", "?BC", "A?C", "AB?",
-                            "??C", "?B?", "A??", "???"};
-const int tz = tar.size();
+const string abc = "ABC";
 int main() {
   string s;
   cin >> s;
   int sz = s.size();
-  long double total = 1;
-  rep(i, 0, sz) {
-    if (s[i] == '?') total *= 3;
-  }
-
-  long double p = 0;
+  double ans = 0;
   rep(i, 0, sz - 2) {
-    string tmp = s.substr(i, 3);
-    cout << tmp << endl;
-    rep(j, 0, tz) {
-      if (tmp == tar[j]) ++p;
+    int cnt = 0;
+    bool flg = true;
+    rep(j, 0, 3) {
+      if (s[i + j] == '?') {
+        ++cnt;
+        continue;
+      }
+      if (s[i + j] == abc[j]) continue;
+      flg = false;
+      break;
     }
+    if (flg) ans += pow(3, -cnt);
   }
-  printf("%.15lf\n", p / total);
+  printf("%.15lf\n", ans);
   return 0;
 }
