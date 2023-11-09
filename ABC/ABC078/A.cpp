@@ -43,11 +43,10 @@ bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
 int main() {
   char x, y;
   cin >> x >> y;
-  int xa = x - 'A';
-  int ya = y - 'A';
-  if (xa == ya) {
+
+  if (x == y) {
     cout << "=" << endl;
-  } else if (xa > ya) {
+  } else if (x > y) {
     cout << ">" << endl;
   } else {
     cout << "<" << endl;
