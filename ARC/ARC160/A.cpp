@@ -58,8 +58,7 @@ int main() {
       x = small[k - aa];
     }
     if (b - k < int(large.size())) {
-      sort(begin(large), end(large));
-      reverse(begin(large), end(large));
+      sort(begin(large), end(large), greater());
       x = large[b - k];
     }
     if (x != -1) {
