@@ -43,30 +43,14 @@ bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
 int main() {
   string s;
   cin >> s;
-  int n = s.size();
-  stack<char> st;
-
-  rep(i, 0, n) {
-    st.push(s[i]);
-    string t;
-
-    int cnt = 0;
-    while (!st.empty() && cnt < 3) {
-      t.push_back(st.top());
-      st.pop();
-      ++cnt;
-    }
-    if (t == "CBA") continue;
-    reverse(begin(t), end(t));
-    for (char c : t) st.push(c);
-  }
-
   string ans;
-  while (!st.empty()) {
-    ans.push_back(st.top());
-    st.pop();
+  for (char c : s) {
+    ans += c;
+    if (ans.size() < 3) continue;
+    if (ans.substr(ans.size() - 3) == "ABC")
+      ans.erase(ans.end() - 3, ans.end());
   }
-  reverse(begin(ans), end(ans));
+
   cout << ans << endl;
   return 0;
 }
