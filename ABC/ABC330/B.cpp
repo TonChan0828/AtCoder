@@ -47,15 +47,7 @@ int main() {
   rep(i, 0, n) {
     int a;
     cin >> a;
-    int res = 0;
-    if (a > r) {
-      res = r;
-    } else if (a < l) {
-      res = l;
-    } else {
-      res = a;
-    }
-
+    int res = clamp(a, l, r);
     cout << res << " ";
   }
   cout << endl;
