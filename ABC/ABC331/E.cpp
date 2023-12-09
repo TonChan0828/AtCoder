@@ -46,31 +46,24 @@ int main() {
   vector<int> a(n), b(m);
   rep(i, 0, n) cin >> a[i];
   rep(i, 0, m) cin >> b[i];
-  multiset<int> ms;
-  rep(i, 0, m) ms.insert(b[i]);
-  map<int, vector<int>> mp;
+  vector<pair<int, int>> bb;
+  rep(i, 0, m) bb.push_back({b[i], i});
+  sort(begin(bb), end(bb), greater());
+  set<pair<int, int>> set;
   rep(i, 0, l) {
     int c, d;
     cin >> c >> d;
     --c, --d;
-    mp[c].push_back(d);
+    set.insert({c, d});
   }
 
   int ans = 0;
   rep(i, 0, n) {
-    for (int x : mp[i]) {
-      auto itr = ms.find(b[x]);
-      ms.erase(itr);
-    }
-
-    if (!ms.empty()) {
-      auto tar = ms.end();
-      --tar;
-      chmax(ans, *tar + a[i]);
-    }
-
-    for (int x : mp[i]) {
-      ms.insert(b[x]);
+    rep(j, 0, m) {
+      if (set.find({i, bb[j].second}) == set.end()) {
+        chmax(ans, a[i] + bb[j].first);
+        break;
+      }
     }
   }
   cout << ans << endl;
