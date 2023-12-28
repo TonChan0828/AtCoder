@@ -51,7 +51,7 @@ int main() {
   rep(i, 0, h) cin >> s[i];
 
   vector group(h, vector<int>(w, 0));
-  int cnt = 1;
+  int cnt = 0;
   int red = 0;
   rep(i, 0, h) {
     rep(j, 0, w) {
@@ -61,6 +61,7 @@ int main() {
       }
       if (group[i][j]) continue;
 
+      ++cnt;
       queue<pair<int, int>> q;
       q.push({i, j});
       group[i][j] = cnt;
@@ -76,7 +77,6 @@ int main() {
           q.push({ny, nx});
         }
       }
-      ++cnt;
     }
   }
 
@@ -90,7 +90,7 @@ int main() {
         if (ny < 0 || ny >= h || nx < 0 || nx >= w) continue;
         if (group[ny][nx]) s.insert(group[ny][nx]);
       }
-      res += cnt - (int)s.size();
+      res += cnt + 1 - (int)s.size();
     }
   }
   res /= red;
