@@ -48,28 +48,19 @@ int main() {
   vector<int> a(n);
   rep(i, 0, n) cin >> a[i];
   sort(begin(a), end(a), greater());
-  priority_queue<P, vector<P>, greater<P>> q;
-
-  ll ans = 0;
-  rep(i, 0, m) q.emplace(0, 0);
-  int i = 0;
-  while (i < n) {
-    auto [tmp, cnt] = q.top();
-    // cout << tmp << endl;
-    q.pop();
-    if (cnt == 2) {
-      ans += tmp * tmp;
-      continue;
+  vector<ll> sum(m, 0);
+  int cnt = 0;
+  rep(i, 0, n) {
+    if (i < m) {
+      sum[cnt] += a[i];
+      ++cnt;
+    } else {
+      --cnt;
+      sum[cnt] += a[i];
     }
-    q.emplace(tmp + a[i], cnt + 1);
-    ++i;
   }
-  while (!q.empty()) {
-    auto [tmp, _] = q.top();
-    q.pop();
-    ans += tmp * tmp;
-  }
-
+  ll ans = 0;
+  rep(i, 0, m) ans += sum[i] * sum[i];
   cout << ans << endl;
   return 0;
 }
