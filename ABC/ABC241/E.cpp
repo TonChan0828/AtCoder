@@ -69,11 +69,12 @@ int main() {
   if (k - now <= 0) {
     ans = sum[k];
   } else {
-    int dist = now - vis[pos];
+    int start = vis[pos];
+    int dist = now - start;
     ans = sum[now];
     k -= now;
-    ans += (sum[now] - sum[vis[pos]]) * (k / dist);
-    ans += sum[vis[pos] + k % dist] - sum[vis[pos]];
+    ans += (sum[now] - sum[start]) * (k / dist);
+    ans += sum[start + k % dist] - sum[start];
   }
 
   cout << ans << endl;
