@@ -60,7 +60,6 @@ int main() {
   rep(i, 0, h) {
     rep(j, 0, w) {
       if (!check(i, j)) continue;
-      string test = "";
       bool ok = true;
       int ni = i, nj = j;
       rep(k, 0, n) {
