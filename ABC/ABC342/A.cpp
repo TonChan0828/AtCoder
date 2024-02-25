@@ -43,20 +43,17 @@ bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
 int main() {
   string s;
   cin >> s;
-  map<char, int> mp;
-
-  for (char c : s) {
-    mp[c]++;
-  }
   int sz = s.size();
-  char tar;
-  for (auto [key, val] : mp) {
-    if (val == 1) {
-      tar = key;
-    }
-  }
   rep(i, 0, sz) {
-    if (s[i] == tar) {
+    bool ok = true;
+    rep(j, 0, sz) {
+      if (i == j) continue;
+      if (s[i] == s[j]) {
+        ok = false;
+        break;
+      }
+    }
+    if (ok) {
       cout << i + 1 << endl;
       return 0;
     }
