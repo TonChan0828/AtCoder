@@ -41,15 +41,9 @@ bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
 }
 
 int main() {
-  vector<int> a(2);
-  cin >> a[0] >> a[1];
-  a.push_back(a[0] + a[1]);
-  sort(a.begin(), a.end());
-  int ans = 0;
-  rep(i, 0, 3) {
-    if (ans == a[i]) ++ans;
-  }
-  cout << ans << endl;
+  int a, b;
+  cin >> a >> b;
+  cout << (a + b == 0 ? 1 : 0) << endl;
 
   return 0;
 }
