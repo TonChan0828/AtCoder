@@ -45,27 +45,13 @@ int main() {
   cin >> k;
   ll ans = 0;
   rep(i, 1, 1e6 + 1) {
-    ll t = i;
-    ll x = t * t * t;
+    ll x = i;
+    x = x * x * x;
     if (x > k) break;
-    vector<ll> num;
-    ll tar = x;
-    while (tar > 0) {
-      num.push_back(tar % 10LL);
-      tar /= 10LL;
-    }
-    int sz = num.size();
-    bool ok = true;
-    rep(j, 0, sz / 2) {
-      if (num[j] != num[sz - 1 - j]) {
-        ok = false;
-        break;
-      }
-    }
-    if (ok) {
-      ans = x;
-      // cout << ans << endl;
-    }
+    string s = to_string(x);
+    string t = s;
+    reverse(begin(t), end(t));
+    if (s == t) ans = x;
   }
   cout << ans << endl;
   return 0;
