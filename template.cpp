@@ -24,7 +24,8 @@ bool chmin(T &a, const T &b) {
 #define rep(i, x, n) for (int i = x; i < (int)(n); ++i)
 #define rrep(i, a, b) for (int i = a; i >= (int)(b); --i)
 // first昇順 firstが同値の場合second降順
-bool asc_desc(pair<int, int> &left, pair<int, int> &right) {
+template <typename T>
+bool asc_desc(T &left, T &right) {
   if (left.first == right.first) {
     return right.second < left.second;
   } else {
@@ -32,7 +33,8 @@ bool asc_desc(pair<int, int> &left, pair<int, int> &right) {
   }
 }
 // first降順 firstが同値の場合second昇順
-bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
+template <typename T>
+bool desc_asc(T &left, T &right) {
   if (left.first == right.first) {
     return left.second < right.second;
   } else {
@@ -42,5 +44,5 @@ bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
 
 int main() { 
   
-  return 0;
-  }
+  return 0; 
+}
