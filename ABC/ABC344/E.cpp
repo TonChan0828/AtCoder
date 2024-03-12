@@ -49,14 +49,14 @@ int main() {
   rep(i, 0, n) cin >> a[i];
   map<int, pair<int, int>> mp;
   rep(i, 0, n) {
-    int front = 0, end = 0;
+    int head = 0, tail = 0;
     if (i != 0) {
-      front = a[i - 1];
+      head = a[i - 1];
     }
     if (i != n - 1) {
-      end = a[i + 1];
+      tail = a[i + 1];
     }
-    mp[a[i]] = {front, end};
+    mp[a[i]] = {head, tail};
   }
 
   cin >> Q;
@@ -66,16 +66,16 @@ int main() {
     if (q == 1) {
       int x, y;
       cin >> x >> y;
-      auto [front, end] = mp[x];
-      mp[x] = {front, y};
-      mp[y] = {x, end};
-      mp[end].first = y;
+      auto [head, tail] = mp[x];
+      mp[x] = {head, y};
+      mp[y] = {x, tail};
+      mp[tail].first = y;
     } else {
       int x;
       cin >> x;
-      auto [front, end] = mp[x];
-      if (front != 0) mp[front].second = end;
-      if (end != 0) mp[end].first = front;
+      auto [head, tail] = mp[x];
+      if (head != 0) mp[head].second = tail;
+      if (tail != 0) mp[tail].first = head;
       mp[x] = {-1, -1};
     }
   }
