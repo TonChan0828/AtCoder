@@ -47,23 +47,26 @@ int main() {
   cin >> h >> w >> m;
 
   vector<ll> t(m), a(m), x(m);
-  rep(i, 0, m) { cin >> t[i] >> a[i] >> x[i]; }
+  rep(i, 0, m) {
+    cin >> t[i] >> a[i] >> x[i];
+    --a[i];
+  }
 
   ll toth = 0, totw = 0;
   map<ll, ll> mp;
-  set<ll> ah, wh;
+  vector<int> ah(200001, 0), wh(200001, 0);
   mp[0] = h * w;
 
   rrep(i, m - 1, 0) {
     if (t[i] == 1) {
-      if (ah.contains(a[i])) continue;
-      ah.insert(a[i]);
+      if (ah[a[i]]) continue;
+      ah[a[i]] = 1;
       mp[x[i]] += w - totw;
       toth++;
       mp[0] -= w - totw;
     } else {
-      if (wh.contains(a[i])) continue;
-      wh.insert(a[i]);
+      if (wh[a[i]]) continue;
+      wh[a[i]] = 1;
       mp[x[i]] += h - toth;
       totw++;
       mp[0] -= h - toth;
