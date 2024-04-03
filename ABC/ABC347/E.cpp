@@ -53,7 +53,7 @@ int main() {
     cin >> x;
     --x;
     cnt[i] = cnt[i - 1];
-    if (s.find(x) != s.end()) {
+    if (s.contains(x)) {
       s.erase(x);
     } else {
       s.insert(x);
