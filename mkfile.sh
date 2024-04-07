@@ -14,5 +14,6 @@ else
     for ((i=3; i<=$#; i++)); do
         file_name="${contest_name}/${folder_name}/${args[i]}.cpp"
         cp template.cpp "${file_name}"
+        code "${file_name}"
     done
     fi
