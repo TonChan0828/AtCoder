@@ -6,6 +6,10 @@ else
     contest_name=$1
     folder_name=$1$2
 
+    if [ ! -d "${contest_name}" ]; then
+        mkdir -p "${contest_name}"
+    fi
+
     if [ ! -d "${contest_name}/${folder_name}" ]; then
         mkdir -p "${contest_name}/${folder_name}"
     fi
