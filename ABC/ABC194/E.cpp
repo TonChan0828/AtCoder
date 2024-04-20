@@ -49,7 +49,7 @@ int main() {
   rep(i, 0, n) cin >> a[i];
 
   set<int> s;
-  rep(i, 0, 2 * 1e6) s.insert(i);
+  rep(i, 0, n + 2) s.insert(i);
   map<int, int> mp;
   rep(i, 0, m) {
     if (mp[a[i]] == 0) s.erase(a[i]);
