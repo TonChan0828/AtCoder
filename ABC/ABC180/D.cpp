@@ -46,29 +46,12 @@ int main() {
   ll x, y, a, b;
   cin >> x >> y >> a >> b;
 
-  ll limit = y / a;
-
   ll ex = 0;
-  while (x < y) {
-    if (x >= limit) {
-      ex += (y - 1 - x) / b;
-      break;
-    } else if (x * a < x + b) {
-      ll t = x;
-      while (t < x + b) {
-        ++ex;
-        t *= a;
-      }
-      --ex;
-      x = t / a;
-    } else {
-      ll cnt = (x * a - x) / b;
-      ex += cnt;
-      x += b * cnt;
-    }
-    // cout << x << endl;
+  while ((double)a * x <= 2e18 && a * x <= x + b && a * x < y) {
+    x *= a;
+    ++ex;
   }
 
-  cout << ex << endl;
+  cout << ex + (y - 1 - x) / b << endl;
   return 0;
 }
