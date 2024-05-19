@@ -46,7 +46,7 @@ int main() {
   ll m = 1e9;
   ll a, b, c, d;
   cin >> a >> b >> c >> d;
-  // a += m, b += m, c += m, d += m;
+  a += m, b += m, c += m, d += m;
   const vector<vector<ll>> ru = {
       {0, 0, 0, 0, 0}, {0, 2, 3, 3, 4}, {0, 3, 6, 7, 8}};
   const vector<vector<ll>> rd = {
