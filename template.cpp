@@ -32,7 +32,6 @@ bool asc_desc(pair<int,int> &left, pair<int,int> &right) {
   }
 }
 // first降順 firstが同値の場合second昇順
-template <typename T>
 bool desc_asc(pair<int,int> &left, pair<int,int> &right) {
   if (left.first == right.first) {
     return left.second < right.second;
