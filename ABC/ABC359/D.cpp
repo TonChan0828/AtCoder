@@ -48,49 +48,30 @@ int main() {
   string s;
   cin >> s;
 
-  const unsigned mask{(1U << k - 1) - 1};
-  vector<int> ng;
-  rep(i, 0, 1 << k) {
-    bool ok = true;
-    for (int j = 0, l = k - 1; j < l; ++j, --l) {
-      if ((1 & i >> j) != (1 & i >> l)) {
-        ok = false;
-        break;
-      }
-    }
-    if (!ok) {
-      ng.push_back(i);
-    }
-  }
+  auto reverseCheck = [](string s) -> bool {
+    string rs = s;
+    reverse(begin(rs), end(rs));
+    return s == rs;
+  };
 
-  vector<mint> dp(1 << k - 1), pre(1 << k - 1);
-  {
-    unsigned a_mask{}, q_mask{};
-    for (auto c : s | views::take(k - 1)) {
-      a_mask *= 2;
-      q_mask *= 2;
-      a_mask += (c == 'A');
-      q_mask += (c != '?');
-    }
-    for (unsigned i{q_mask}; i < 1U << k - 1; ++i |= q_mask) dp[i ^ a_mask] = 1;
-  }
-
-  for (auto c : s | views::drop(k - 1)) {
+  map<string, mint> dp;
+  dp[""] = 1;
+  rep(i, 0, n) {
+    map<string, mint> pre;
     swap(dp, pre);
-    ranges::fill(dp, mint{});
-
-    if (c != 'B') {
-      for (auto i : ng | views::filter([](auto i) { return ~i & 1; })) {
-        dp[i & mask] += pre[i / 2];
-      }
-    }
-    if (c != 'A') {
-      for (auto i : ng | views::filter([](auto i) { return i & 1; })) {
-        dp[i & mask] += pre[i / 2];
+    for (auto [t, num] : pre) {
+      for (char c = 'A'; c <= 'B'; ++c) {
+        if (s[i] != '?' && s[i] != c) continue;
+        string tc = t + c;
+        if (tc.size() == k && reverseCheck(tc)) continue;
+        if (tc.size() == k) tc.erase(begin(tc));
+        dp[tc] += num;
       }
     }
   }
 
-  cout << reduce(begin(dp), end(dp)).val() << endl;
+  mint ans = 0;
+  for (auto [t, num] : dp) ans += num;
+  cout << ans.val() << endl;
   return 0;
 }
