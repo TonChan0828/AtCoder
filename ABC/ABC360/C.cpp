@@ -39,7 +39,6 @@ bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
     return right.first < left.first;
   }
 }
-using P = pair<int, int>;
 
 int main() {
   int n;
@@ -47,26 +46,15 @@ int main() {
   vector<int> a(n), w(n);
   rep(i, 0, n) cin >> a[i];
   rep(i, 0, n) cin >> w[i];
-  vector<P> p(n);
-  vector<int> cnt(n, 0);
-  rep(i, 0, n) {
-    --a[i];
-    cnt[a[i]]++;
-    p[i] = {w[i], a[i]};
-  }
-  sort(begin(p), end(p));
 
-  ll ans = 0;
-  int now = 0;
+  vector<int> mw(n);
   rep(i, 0, n) {
-    // cout << now << endl;
-    if (cnt[i]) continue;
-    while (cnt[p[now].second] < 2) ++now;
-    cnt[i]++;
-    cnt[p[now].second]--;
-    ans += p[now].first;
-    ++now;
+    a[i]--;
+    mw[a[i]] = max(mw[a[i]], w[i]);
   }
-  cout << ans << endl;
+
+  const int sumW = accumulate(begin(w), end(w), 0);
+  const int sumMw = accumulate(begin(mw), end(mw), 0);
+  cout << sumW - sumMw << endl;
   return 0;
 }
