@@ -43,24 +43,14 @@ bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
 int main() {
   int n;
   cin >> n;
-  int pos = -1;
-  pair<int, int> first = {0, -1}, second = {0, -1};
-  rep(i, 0, n) {
-    int a;
-    cin >> a;
-    if (a > first.first) {
-      auto tmp = first;
-      first = {a, i + 1};
-      if (tmp.first > second.first) {
-        second = tmp;
-      }
-    } else {
-      if (a > second.first) {
-        second = {a, i + 1};
-      }
-    }
-  }
 
-  cout << second.second << endl;
+  vector<pair<int, int>> a(n);
+  rep(i, 0, n) {
+    int t;
+    cin >> t;
+    a[i] = {t, i + 1};
+  }
+  sort(begin(a), end(a), greater());
+  cout << a[1].second << endl;
   return 0;
 }
