@@ -73,6 +73,6 @@ int main() {
   //   cout << endl;
   // }
 
-  cout << max({dp[n][0], dp[n][1], dp[n][2]}) << endl;
+  cout << ranges::max(dp[n]) << endl;
   return 0;
 }
