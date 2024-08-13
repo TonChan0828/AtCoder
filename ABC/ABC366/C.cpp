@@ -45,7 +45,7 @@ int main() {
   cin >> Q;
 
   vector<int> num(1e6 + 1, 0);
-  set<int> s;
+  int cnt = 0;
 
   while (Q--) {
     int q;
@@ -53,15 +53,16 @@ int main() {
     if (q == 1) {
       int x;
       cin >> x;
-      s.insert(x);
+      if (num[x] == 0) ++cnt;
       ++num[x];
+
     } else if (q == 2) {
       int x;
       cin >> x;
       --num[x];
-      if (num[x] == 0) s.erase(x);
+      if (num[x] == 0) --cnt;
     } else {
-      cout << s.size() << "\n";
+      cout << cnt << "\n";
     }
   }
   return 0;
