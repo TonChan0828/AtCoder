@@ -43,22 +43,12 @@ bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
 int main() {
   string s;
   cin >> s;
-  char t = 'A';
+  vector<int> x(26);
+  rep(i, 0, 26) x[s[i] - 'A'] = i;
+
   int ans = 0;
-  int pos = 0;
-  rep(i, 0, 26) {
-    int nxt = 0;
-    rep(x, 0, 26) {
-      if (s[x] == t) {
-        nxt = x;
-      }
-    }
-    if (t != 'A') {
-      ans += abs(nxt - pos);
-    }
-    pos = nxt;
-    ++t;
-  }
+  rep(i, 0, 25) ans += abs(x[i + 1] - x[i]);
+
   cout << ans << endl;
   return 0;
 }
