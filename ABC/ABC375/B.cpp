@@ -49,10 +49,10 @@ int main() {
   rep(i, 0, n) {
     double x, y;
     cin >> x >> y;
-    ans += sqrt(abs(x - nx) * abs(x - nx) + abs(y - ny) * abs(y - ny));
+    ans += hypot(abs(x - nx), abs(y - ny));
     nx = x, ny = y;
   }
-  ans += sqrt(abs(0 - nx) * abs(0 - nx) + abs(0 - ny) * abs(0 - ny));
+  ans += hypot(abs(0 - nx), abs(0 - ny));
 
   printf("%.10f\n", ans);
   return 0;
