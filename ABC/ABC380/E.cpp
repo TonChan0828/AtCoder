@@ -48,9 +48,9 @@ int main() {
 
   dsu uf(n + 2);
   vector<int> l(n + 2), r(n + 2), col(n + 2);
-  rep(i, n + 2) l[i] = r[i] = col[i] = i;
+  rep(i, 0, n + 2) l[i] = r[i] = col[i] = i;
 
-  rep(qi, q) {
+  rep(qi, 0, q) {
     int type;
     cin >> type;
     if (type == 1) {
