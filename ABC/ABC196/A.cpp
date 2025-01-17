@@ -43,11 +43,7 @@ bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
 int main() {
   int a, b, c, d;
   cin >> a >> b >> c >> d;
-  int ans = -10010001;
-  chmax(ans, a - c);
-  chmax(ans, a - d);
-  chmax(ans, b - c);
-  chmax(ans, b - d);
-  cout << ans << endl;
+
+  cout << b - c << endl;
   return 0;
 }
