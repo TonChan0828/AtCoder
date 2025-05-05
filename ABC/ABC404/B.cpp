@@ -47,8 +47,8 @@ int main() {
   rep(i, 0, n) cin >> s[i];
   rep(i, 0, n) cin >> t[i];
   int ans = 1001001;
-  rep(i, 0, 4) {
-    int cnt = i;
+  rep(k, 0, 4) {
+    int cnt = k;
     rep(i, 0, n) rep(j, 0, n) if (s[i][j] != t[i][j])++ cnt;
     ans = min(ans, cnt);
     auto tmp = s;
