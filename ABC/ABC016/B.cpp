@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
+
+#include <atcoder/all>
 using namespace std;
+using namespace atcoder;
 using ll = long long;
+
 template <typename T>
 bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -19,35 +23,34 @@ bool chmin(T &a, const T &b) {
 }
 #define rep(i, x, n) for (int i = x; i < (int)(n); ++i)
 #define rrep(i, a, b) for (int i = a; i >= (int)(b); --i)
-bool myCompare(pair<int, int> a, pair<int, int> b) {
-  if (a.first != b.first) {
-    return a.first > b.first;
-  }
-  if (a.second != b.second) {
-    return a.second < b.second;
+// first昇順 firstが同値の場合second降順
+bool asc_desc(pair<int, int> &left, pair<int, int> &right) {
+  if (left.first == right.first) {
+    return right.second < left.second;
   } else {
-    return true;
+    return left.first < right.first;
+  }
+}
+// first降順 firstが同値の場合second昇順
+bool desc_asc(pair<int, int> &left, pair<int, int> &right) {
+  if (left.first == right.first) {
+    return left.second < right.second;
+  } else {
+    return right.first < left.first;
   }
 }
 
 int main() {
-  int n;
-  cin >> n;
-  vector<string> x(n);
-  rep(i, 0, n) cin >> x[i];
-  int cnt = 0;
-  rep(i, 0, n) {
-    rep(j, 0, 9) {
-      if (x[i][j] == 'x') ++cnt;
-      if (x[i][j] == 'o') {
-        if (i == 0) {
-          ++cnt;
-        } else if (x[i - 1][j] != 'o') {
-          ++cnt;
-        }
-      }
-    }
+  int a, b, c;
+  cin >> a >> b >> c;
+  if (a + b == c && a - b == c) {
+    cout << "?\n";
+  } else if (a + b == c) {
+    cout << "+\n";
+  } else if (a - b == c) {
+    cout << "-\n";
+  } else {
+    cout << "!\n";
   }
-  cout << cnt << endl;
   return 0;
 }
