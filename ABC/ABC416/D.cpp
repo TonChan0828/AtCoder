@@ -63,6 +63,8 @@ int main() {
       if (itr != end(b)) {
         ans -= m;
         b.erase(itr);
+      } else {
+        break;
       }
     }
     cout << ans << "\n";
