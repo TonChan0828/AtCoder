@@ -46,21 +46,15 @@ int main() {
   vector<int> l(n);
   rep(i, 0, n) cin >> l[i];
   int mi = n, ma = -1;
-  int ans = 0;
   rep(i, 0, n) {
     if (l[i] == 0) {
-      ++ans;
       mi = min(mi, i);
       ma = max(ma, i);
     }
   }
-
-  if (ans == 0) {
-    cout << 0 << endl;
-    return 0;
-  }
+  int ans = max(ma + 1, r) - min(mi, r);
   rep(i, min(mi, r), max(ma + 1, r)) {
-    if (l[i] == 1) ans += 2;
+    if (l[i] == 1) ++ans;
   }
 
   cout << ans << endl;
