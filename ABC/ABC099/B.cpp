@@ -44,14 +44,14 @@ int main() {
   int a, b;
   cin >> a >> b;
 
-  int l = 1, r = 1 + 2;
-  rep(i, 3, 1001) {
+  int l = 0, r = 1;
+  rep(i, 2, 1000) {
+    l = r;
+    r += i;
     if (l - a > 0 && l - a == r - b) {
       cout << l - a << endl;
       break;
     }
-    l = r;
-    r += i;
   }
   return 0;
 }
