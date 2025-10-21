@@ -44,7 +44,9 @@ int main() {
   int Q;
   cin >> Q;
 
-  vector<int> a(1), b(1);
+  stack<int> a, b;
+  a.push(0);
+  b.push(0);
 
   while (Q--) {
     int q;
@@ -52,17 +54,13 @@ int main() {
     if (q == 1) {
       char c;
       cin >> c;
-      if (c == '(') {
-        a.push_back(a.back() + 1);
-      } else {
-        a.push_back(a.back() - 1);
-      }
-      b.push_back(min(b.back(), a.back()));
+      a.push(a.top() + (c == '(' ? 1 : -1));
+      b.push(min(b.top(), a.top()));
     } else {
-      a.pop_back();
-      b.pop_back();
+      a.pop();
+      b.pop();
     }
-    if (a.back() == 0 && b.back() == 0) {
+    if (a.top() == 0 && b.top() == 0) {
       cout << "Yes\n";
     } else {
       cout << "No\n";
