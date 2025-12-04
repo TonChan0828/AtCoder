@@ -50,10 +50,11 @@ int main() {
     vector<int> t(n), l(n), u(n);
     rep(i, 0, n) cin >> t[i] >> l[i] >> u[i];
     bool ok = true;
-
+    ll prev = 0;
     rep(i, 0, n) {
-      low -= t[i];
-      up += t[i];
+      ll dt = t[i] - prev;
+      low -= dt;
+      up += dt;
       low = max(l[i], low);
       up = min(u[i], up);
 
@@ -61,6 +62,7 @@ int main() {
         ok = false;
         break;
       }
+      prev = t[i];
     }
 
     if (ok) {
