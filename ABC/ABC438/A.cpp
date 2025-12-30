@@ -43,7 +43,6 @@ bool desc_asc(pair<int, int>& left, pair<int, int>& right) {
 int main() {
   int d, f;
   cin >> d >> f;
-  --f;
-  cout << ((((d + 6) / 7) * 7 + f) % d) % 7 + 1 << endl;
+  cout << 7 - ((d - f) % 7) << endl;
   return 0;
 }
