@@ -52,6 +52,7 @@ int main() {
   } else {
     if (m == 1 && d == 7) {
       cout << "Yes\n";
+      return 0;
     }
   }
   cout << "No\n";
