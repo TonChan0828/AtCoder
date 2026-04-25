@@ -47,60 +47,34 @@ int main() {
     string a, b;
     cin >> a >> b;
 
-    stack<char> st;
-    string aa, bb;
-    for (char c : a) {
-      st.push(c);
-      if (c == ')') {
-        string tmp;
-        rep(i, 0, 4) {
-          if (st.empty()) break;
-          tmp += st.top();
-          st.pop();
-        }
-        if (tmp == ")xx(") {
-          st.push('x');
-          st.push('x');
-        } else {
-          reverse(begin(tmp), end(tmp));
-          for (char ch : tmp) st.push(ch);
-        }
-      }
-    }
-    while (!st.empty()) {
-      aa += st.top();
-      st.pop();
-    }
-
-    for (char c : b) {
-      st.push(c);
-      if (c == ')') {
-        string tmp;
-        rep(i, 0, 4) {
-          if (st.empty()) break;
-          tmp += st.top();
-          st.pop();
-        }
-        if (tmp == ")xx(") {
-          st.push('x');
-          st.push('x');
-        } else {
-          reverse(begin(tmp), end(tmp));
-          for (char ch : tmp) st.push(ch);
+    auto reduce = [](const string& s) {
+      stack<char> st;
+      for (char c : s) {
+        st.push(c);
+        if (c == ')') {
+          string tmp;
+          for (int i = 0; i < 4 && !st.empty(); i++) {
+            tmp += st.top();
+            st.pop();
+          }
+          if (tmp == ")xx(") {
+            st.push('x');
+            st.push('x');
+          } else {
+            reverse(begin(tmp), end(tmp));
+            for (char ch : tmp) st.push(ch);
+          }
         }
       }
-    }
-    while (!st.empty()) {
-      bb += st.top();
-      st.pop();
-    }
+      string result;
+      while (!st.empty()) {
+        result += st.top();
+        st.pop();
+      }
+      return result;
+    };
 
-    // cout << " " << aa << "  " << bb << endl;
-    if (aa == bb) {
-      cout << "Yes\n";
-    } else {
-      cout << "No\n";
-    }
+    cout << (reduce(a) == reduce(b) ? "Yes" : "No") << "\n";
   }
   return 0;
 }
