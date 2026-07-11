@@ -47,27 +47,13 @@ int main() {
     ll x, y, k;
     cin >> x >> y >> k;
 
-    map<ll, int> mp;
-    mp[x] = 1;
-    int cnt = 1;
-    while (x > 0) {
-      x /= k;
-      mp[x] = ++cnt;
-    }
     int ans = 0;
-    if (mp[y] > 0) {
-      ans = mp[y];
-    } else {
-      while (y > 0) {
-        y /= k;
-        ++ans;
-        if (mp[y] > 0) {
-          ans += mp[y];
-          break;
-        }
-      }
+    while (x != y) {
+      if (x < y) swap(x, y);
+      x /= k;
+      ++ans;
     }
-    cout << ans - 1 << "\n";
+    cout << ans << "\n";
   }
   return 0;
 }
