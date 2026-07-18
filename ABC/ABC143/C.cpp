@@ -45,12 +45,12 @@ int main() {
   string s;
   cin >> n >> s;
   vector<char> ans;
-  rep(i, 0, n) {
+  rep(i, 1, n) {
     if (s[i - 1] != s[i]) ans.push_back(s[i - 1]);
   }
   ans.push_back(s[n - 1]);
   // for (char c : ans) cout << c;
   // cout << endl;
-  cout << ans.size() - 1 << endl;
+  cout << ans.size() << endl;
   return 0;
 }
