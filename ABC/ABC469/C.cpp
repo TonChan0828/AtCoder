@@ -47,11 +47,11 @@ int main() {
   int j = 0;
 
   rep(i, 0, n) {
-    while (j < n - 1 && s[j] == 'o') {
+    ++j;
+    while (j - 1 < n && s[j - 1] == 'o') {
       j++;
     }
-    cout << min(j + 1, n) << endl;
-    if (j < n) j++;
+    cout << min(j, n) << endl;
   }
   return 0;
 }
