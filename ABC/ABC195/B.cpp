@@ -6,7 +6,7 @@ using namespace atcoder;
 using ll = long long;
 
 template <typename T>
-bool chmax(T &a, const T &b) {
+bool chmax(T& a, const T& b) {
   if (a < b) {
     a = b;  // aをbで更新
     return true;
@@ -14,7 +14,7 @@ bool chmax(T &a, const T &b) {
   return false;
 }
 template <typename T>
-bool chmin(T &a, const T &b) {
+bool chmin(T& a, const T& b) {
   if (a > b) {
     a = b;  // aをbで更新
     return true;
@@ -23,35 +23,30 @@ bool chmin(T &a, const T &b) {
 }
 #define rep(i, x, n) for (int i = x; i < (int)(n); ++i)
 #define rrep(i, a, b) for (int i = a; i >= (int)(b); --i)
-bool myCompare(pair<int, int> a, pair<int, int> b) {
-  if (a.first != b.first) {
-    return a.first > b.first;
-  }
-  if (a.second != b.second) {
-    return a.second < b.second;
+// first昇順 firstが同値の場合second降順
+bool asc_desc(pair<int, int>& left, pair<int, int>& right) {
+  if (left.first == right.first) {
+    return right.second < left.second;
   } else {
-    return true;
+    return left.first < right.first;
+  }
+}
+// first降順 firstが同値の場合second昇順
+bool desc_asc(pair<int, int>& left, pair<int, int>& right) {
+  if (left.first == right.first) {
+    return left.second < right.second;
+  } else {
+    return right.first < left.first;
   }
 }
 
 int main() {
-  int a, b, w;
-  cin >> a >> b >> w;
-  w *= 1000;
-  int min = 10101010, max = -1;
-  rep(i, 1, w + 1) {
-    int l = i * a;
-    int r = i * b;
-    if (l <= w && r >= w) {
-      chmin(min, i);
-      chmax(max, i);
-    }
+  string s;
+  cin >> s;
+  for (char c : s) {
+    if (c == '.') break;
+    cout << c;
   }
-
-  if (min == 10101010) {
-    cout << "UNSATISFIABLE" << endl;
-  } else {
-    cout << min << " " << max << endl;
-  }
+  cout << endl;
   return 0;
 }
